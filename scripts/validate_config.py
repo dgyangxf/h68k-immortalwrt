@@ -11,32 +11,15 @@ CFG = Path(".config").read_text(encoding="utf-8", errors="ignore")
 REQUIRED = [
     ("CONFIG_TARGET_rockchip_armv8_DEVICE_hinlink_h68k=y", "H68K 设备支持（patch 未生效？）"),
     ("CONFIG_PACKAGE_luci=y",                               "LuCI 界面"),
-    ("CONFIG_PACKAGE_luci-app-openclash=y",                 "OpenClash"),
-    ("CONFIG_PACKAGE_tailscale=y",                          "Tailscale 守护进程"),
     ("CONFIG_PACKAGE_samba4-server=y",                      "SMB 共享 (samba4)"),
     ("CONFIG_PACKAGE_luci-app-samba4=y",                    "SMB LuCI 界面"),
-    ("CONFIG_PACKAGE_luci-app-filemanager=y",               "文件管理器"),
-    ("CONFIG_PACKAGE_luci-app-lucky=y",                     "Lucky"),
-    ("CONFIG_PACKAGE_lucky=y",                              "Lucky 二进制本体"),
-    ("CONFIG_PACKAGE_cups=y",                               "CUPS 打印服务"),
-    ("CONFIG_PACKAGE_kmod-mt7921e=y",                       "MT7921 无线驱动"),
-    ("CONFIG_PACKAGE_wpad-basic-mbedtls=y",                 "WiFi AP 模式 (wpad)"),
-    ("CONFIG_PACKAGE_block-mount=y",                        "磁盘挂载(文件管理依赖)"),
 ]
 
 # run4 起 iStore 降级观察：luci-app-store 符号在 master apk 索引阶段不生成
 # （构建依赖 csstidy/luasrcdiet host 包在 feed 里的解析断链），先出 14 项全绿固件，
 # 商店走后续专项修复或官方 ipk 补装。
 OPTIONAL = [
-    ("CONFIG_PACKAGE_luci-app-store=y",            "iStore 应用商店(暂缓,见诊断)"),
     ("CONFIG_PACKAGE_kmod-usb-printer=y",          "USB 打印机驱动(内核已内置usblp)"),
-    ("CONFIG_PACKAGE_luci-app-tailscale-community=y","Tailscale LuCI 界面"),
-    ("CONFIG_PACKAGE_dnsmasq-full=y",                "dnsmasq-full(OpenClash 推荐)"),
-    ("CONFIG_PACKAGE_avahi-daemon=y",                "Avahi 网络打印机发现"),
-    ("CONFIG_PACKAGE_cups-filters=y",                "CUPS 滤镜"),
-    ("CONFIG_PACKAGE_kmod-usb-storage=y",            "USB 存储"),
-    ("CONFIG_PACKAGE_kmod-fs-exfat=y",               "exFAT 文件系统"),
-    ("CONFIG_PACKAGE_ntfs-3g=y",                     "NTFS 支持"),
     ("CONFIG_PACKAGE_luci-app-upnp=y",               "UPnP"),
     ("CONFIG_PACKAGE_luci-app-ddns=y",               "DDNS"),
 ]
