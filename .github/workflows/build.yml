@@ -74,7 +74,6 @@ jobs:
           chmod -R 755 package/luci-app-smartinfo/root/*
           git clone https://github.com/dgyangxf/luci-app-vlmcsd package/luci-app-vlmcsd
           chmod -R 755 package/luci-app-vlmcsd/root/etc/init.d/vlmcsd
-          git clone https://github.com/coolsnowwolf/luci/trunk/openwrt-25.12/themes/luci-theme-design package/luci-theme-design
           # 【run3 定根因】luci-app-store 的 LUCI_EXTRA_DEPENDS 写成 "luci-lib-taskd (>=1.0.19)"，
           # ImmortalWrt master 的 apk/kconfig 新机制无法表达版本比较 → 整个符号被隐藏（run2 feed
           # 方式与 run3 本地方式不可见的共同解释；lucky 无版本比较故一直存活）。
