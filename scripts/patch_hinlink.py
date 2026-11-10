@@ -156,12 +156,12 @@ def main():
 
     # 3b) H68K 四网口分组：插在 * ) 通配之前
     if "hinlink,h68k)" not in c:
-        old = f"{T}*)\n{T}{T}ucidef_set_interface_lan 'eth0'\n"
+        old = f"{T}*)\n{T}{T}ucidef_set_interface_lan 'eth0 eth1'\n"
         if c.count(old) != 1:
             raise SystemExit("[FATAL] 02_network: 通配组锚点不唯一，放弃。")
         block = (
             f"{T}hinlink,h68k)\n"
-            f"{T}{T}ucidef_set_interfaces_lan_wan 'eth0 eth2 eth3' 'eth1'\n"
+            f"{T}{T}ucidef_set_interfaces_lan_wan 'eth2 eth3' 'eth0 eth1'\n"
             f"{T};;\n"
         )
         c = c.replace(old, block + old, 1)
@@ -170,7 +170,7 @@ def main():
     if changed:
         px.save(rel, c)
         px.count += 1
-        print("[ OK ] 02_network: H68K LAN/WAN = eth0/eth2/eth3 -> br-lan, WAN = eth1" )
+        print("[ OK ] 02_network: H68K LAN/WAN = eth2/eth3 -> br-lan, WAN = eth0/eth1" )
 
     # =====================================================================
     # 4) hotplug.d/net/40-net-smp-affinity
