@@ -67,19 +67,13 @@ jobs:
           cp ../h68k-custom/patches/106-board-rockchip-add-HINLINK-H66K-H68K.patch package/boot/uboot-rockchip/patches/
           ls -la package/boot/uboot-rockchip/patches/ | tail -n 5
 
-      - name: 接入第三方插件 (iStore / Lucky) + usblp 内核内置
+      - name: 接入第三方插件 iStore + usblp 内核内置
         run: |
-          # Lucky：本地包接入（run1 缺 lucky 二进制包目录的问题已修，run3 验证 界面+本体 双 ✔）
-          git clone --depth=1 https://github.com/sirpdboy/luci-app-lucky.git /tmp/lucky
-          mkdir -p package/lucky/luci-app-lucky package/lucky/lucky
-          cp -r /tmp/lucky/luci-app-lucky/. package/lucky/luci-app-lucky/
-          cp -r /tmp/lucky/lucky/. package/lucky/lucky/
-          rm -rf /tmp/lucky
-          # iStore：本地包方式（与 lucky 同款，run3 验证 taskd/luci-lib-taskd 符号可见）
-          git clone --depth=1 https://github.com/linkease/istore.git /tmp/istore
-          mkdir -p package/istore
-          cp -r /tmp/istore/luci/. package/istore/
-          rm -rf /tmp/istore
+          git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+          git clone https://github.com/hyy-666/luci-app-smartinfo package/luci-app-smartinfo
+          chmod -R 755 package/luci-app-smartinfo/root/*
+          git clone https://github.com/dgyangxf/luci-app-vlmcsd package/luci-app-vlmcsd
+          chmod -R 755 package/luci-app-vlmcsd/root/etc/init.d/vlmcsd
           # 【run3 定根因】luci-app-store 的 LUCI_EXTRA_DEPENDS 写成 "luci-lib-taskd (>=1.0.19)"，
           # ImmortalWrt master 的 apk/kconfig 新机制无法表达版本比较 → 整个符号被隐藏（run2 feed
           # 方式与 run3 本地方式不可见的共同解释；lucky 无版本比较故一直存活）。
@@ -88,7 +82,6 @@ jobs:
             sed -i 's/^LUCI_EXTRA_DEPENDS:=luci-lib-taskd.*/LUCI_EXTRA_DEPENDS:=luci-lib-taskd/' package/istore/luci-app-store/Makefile
             grep '^LUCI_EXTRA_DEPENDS' package/istore/luci-app-store/Makefile
           fi
-          ls package/istore/ package/lucky/
           # USB 打印机：kmod-usb-printer 依赖虚拟包 printer-support，master 符号不可见
           #   → usblp 直接内核内置，等效且更稳
           if grep -q '^CONFIG_USB_PRINTER' target/linux/rockchip/armv8/config-6.18; then
