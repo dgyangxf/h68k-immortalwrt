@@ -104,6 +104,7 @@ jobs:
           sed -i 's/nas/services/g' feeds/luci/applications/luci-app-*/root/usr/share/luci/menu.d/luci-app-*.json
           sed -i 's/NAS/Services/g' feeds/luci/applications/luci-app-*/root/usr/share/luci/menu.d/luci-app-*.json
           sed -i 's/vpn/services/g' feeds/luci/applications/luci-app-*/root/usr/share/luci/menu.d/luci-app-*.json
+          sed -i 's/luci-theme-bootstrap/luci-theme-design/g' feeds/luci/collections/luci-light/Makefile
           # store 本地包落地确认（可见性最终以第 9 步 validate 为准）
           grep -l 'Package/luci-app-store' package/istore/*/Makefile && echo '[LOCAL-OK] luci-app-store (package/istore)' || echo '[LOCAL-MISS] luci-app-store!!'
 
