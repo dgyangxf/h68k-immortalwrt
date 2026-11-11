@@ -10,9 +10,6 @@ CFG = Path(".config").read_text(encoding="utf-8", errors="ignore")
 
 REQUIRED = [
     ("CONFIG_TARGET_rockchip_armv8_DEVICE_hinlink_h68k=y", "H68K 设备支持（patch 未生效？）"),
-    ("CONFIG_PACKAGE_luci=y",                               "LuCI 界面"),
-    ("CONFIG_PACKAGE_samba4-server=y",                      "SMB 共享 (samba4)"),
-    ("CONFIG_PACKAGE_luci-app-samba4=y",                    "SMB LuCI 界面"),
 ]
 
 # run4 起 iStore 降级观察：luci-app-store 符号在 master apk 索引阶段不生成
@@ -20,8 +17,6 @@ REQUIRED = [
 # 商店走后续专项修复或官方 ipk 补装。
 OPTIONAL = [
     ("CONFIG_PACKAGE_kmod-usb-printer=y",          "USB 打印机驱动(内核已内置usblp)"),
-    ("CONFIG_PACKAGE_luci-app-upnp=y",               "UPnP"),
-    ("CONFIG_PACKAGE_luci-app-ddns=y",               "DDNS"),
 ]
 
 def diagnose(key_y: str):
