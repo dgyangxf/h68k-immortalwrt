@@ -73,6 +73,7 @@ jobs:
           git clone https://github.com/hyy-666/luci-app-smartinfo package/luci-app-smartinfo
           chmod -R 755 package/luci-app-smartinfo/root/*
           git clone https://github.com/dgyangxf/luci-app-vlmcsd package/luci-app-vlmcsd
+          git clone https://github.com/gngpp/luci-theme-design.git  package/luci-theme-design
           chmod -R 755 package/luci-app-vlmcsd/root/etc/init.d/vlmcsd
           # 【run3 定根因】luci-app-store 的 LUCI_EXTRA_DEPENDS 写成 "luci-lib-taskd (>=1.0.19)"，
           # ImmortalWrt master 的 apk/kconfig 新机制无法表达版本比较 → 整个符号被隐藏（run2 feed
