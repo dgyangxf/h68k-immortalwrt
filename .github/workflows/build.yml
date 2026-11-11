@@ -39,7 +39,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ env.IW_REPO }}
-          ref: ${{ inputs.iw_branch || 'master' }}
+          ref: ${{ inputs.iw_branch || 'openwrt-24.10' }}
           path: openwrt
           fetch-depth: 1
 
