@@ -6,7 +6,7 @@ on:
       iw_branch:
         description: "ImmortalWrt 分支 (默认 master)"
         required: false
-        default: "master"
+        default: "openwrt-24.10"
       upload_packages:
         description: "连同全部软件包一起打包上传（体积大，用于离线装依赖）"
         type: boolean
