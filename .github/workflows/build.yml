@@ -99,7 +99,7 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           sed -i 's/ImmortalWrt/Lenovo_Wireless/g' package/base-files/files/bin/config_generate
-          sed -i 's/root::/root:$1$MgqxCgL.$MpKAEWOvm1Jwb4nrOYH8m0:/g' package/base-files/files/etc/shadow
+          sed -i 's/root::/root:$1$CNb1gyvB$7Qp7MsemTTJOpJXt6DmQm0:/g' package/base-files/files/etc/shadow
           sed -i 's/"MultiWAN 管理器"/"负载均衡"/g' feeds/luci/applications/luci-app-mwan3/po/zh_Hans/mwan3.po
           sed -i 's/nas/services/g' feeds/luci/applications/luci-app-*/luasrc/controller/*.lua
           sed -i 's/NAS/Services/g' feeds/luci/applications/luci-app-*/luasrc/controller/*.lua
